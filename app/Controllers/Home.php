@@ -1,12 +1,19 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 class Home extends BaseController
 {
-	public function index()
+	public function login()
 	{
-		return view('welcome_message');
-	}
+		$data = [
+			'title' => 'Login | Kopi Lampung'
+		];
 
+
+
+		return view('kopi/login', $data);
+	}
 	//--------------------------------------------------------------------
 
 }
