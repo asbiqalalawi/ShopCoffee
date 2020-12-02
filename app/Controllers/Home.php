@@ -9,11 +9,14 @@ class Home extends BaseController
 		$data = [
 			'title' => 'Login | Kopi Lampung'
 		];
-
-
-
 		return view('kopi/login', $data);
 	}
-	//--------------------------------------------------------------------
 
+	public function signup()
+	{
+		$data = [
+			'title' => 'Sign Up | Kopi Lampung'
+		];
+		return view('kopi/signup', $data);
+	}
 }

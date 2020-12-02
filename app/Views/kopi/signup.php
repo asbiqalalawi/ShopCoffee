@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
                 <a class="nav-link active" href="/home/login">Login</a>
-                <a class="nav-link" href="/home/signup">Sign Up</a>
+                <a class="nav-link active" href="/home/signup">Sign Up</a>
             </div>
         </div>
     </nav>
@@ -28,21 +28,31 @@
 <div class="container">
     <div class="tile">
         <center>
-            <i class="fas fa-users" style="font-size:100px;color:white"></i>
-            <h3 class="login">Login</h3>
+            <i class="fas fa-user-friends" style="font-size:100px;color:white"></i>
+            <h3 class="login">Sign Up</h3>
         </center>
         <form action="<?= base_url('auth/login') ?> " method='POST'>
             <div class="form-group">
-                <i class="fas fa-user" style="color:white"></i>
+                <i class="fas fa-tag" style="color:white"></i>
+                <label for="" style="color:white">Your Name </label>
+                <input autocomplete="off" autofocus="on" type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-user-tag" style="color:white"></i>
                 <label for="" style="color:white">Username </label>
                 <input autocomplete="off" autofocus="on" type="text" name="username" id="username" class="form-control">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-phone" style="color:white"></i>
+                <label for="" style="color:white">Number Phone </label>
+                <input autocomplete="off" autofocus="on" type="text" name="phone" id="phone" class="form-control">
             </div>
             <div class="form-group">
                 <i class="fas fa-key" style="color:white"></i>
                 <label for="" style="color:white">Password</label>
                 <input autocomplete="off" autofocus="on" type="password" name="password" id="password" class="form-control">
             </div>
-            <a href="/kopi" class="btn btn-outline-primary btn-block">Sign In</a>
+            <a href="/home/login" class="btn btn-outline-primary btn-block">Register</a>
         </form>
     </div>
 </div>
