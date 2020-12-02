@@ -5,7 +5,12 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col">
-            <h1>Daftar Kopi</h1>
+            <h1 class="mt-3">Daftar Kopi</h1>
+            <?php if (session()->getFlashData('message')) : ?>
+                <div class="alert alert-success" role="alert">
+                    <?= session()->getFlashData('message'); ?>
+                </div>
+            <?php endif; ?>
             <table class="table mt-2">
                 <thead>
                     <tr>
@@ -31,6 +36,7 @@
             </table>
         </div>
     </div>
+    <a href="/Kopi/create" class="btn btn-primary mt-1">Tambah Data Kopi</a>
 </div>
 
 <?= $this->endSection(); ?>
