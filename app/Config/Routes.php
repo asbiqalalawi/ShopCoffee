@@ -31,9 +31,12 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::login');
 
-$routes->get('/kopi/(:segment)', 'Kopi::detail/$1');
+$routes->get('/kopi/create', 'Kopi::create');
+$routes->get('/kopi/edit/(:segment)', 'Kopi::edit/$1');
+$routes->delete('/kopi/(:num)', 'Kopi::delete/$1');
+$routes->get('/kopi/(:any)', 'Kopi::detail/$1');
 
 /**
  * --------------------------------------------------------------------

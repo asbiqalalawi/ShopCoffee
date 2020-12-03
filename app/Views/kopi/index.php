@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<div class="container mt-3">
+<div class="container mt-3 mb-4">
     <div class="row">
         <div class="col">
             <h1 class="mt-3">Daftar Kopi</h1>
@@ -14,8 +14,8 @@
             <table class="table mt-2">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Picture</th>
+                        <th scope="col">No.</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Name of Coffee</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -36,7 +36,7 @@
             </table>
         </div>
     </div>
-    <a href="/Kopi/create" class="btn btn-primary mt-1">Tambah Data Kopi</a>
+    <a href="/kopi/create" class="btn btn-primary mt-1">Tambah Data Kopi</a>
 </div>
 
 <?= $this->endSection(); ?>

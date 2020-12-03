@@ -16,8 +16,14 @@
                             <h5 class="card-title"><?= $kopi['name']; ?></h5>
                             <p class="card-text"><?= $kopi['deskripsi']; ?></p>
 
-                            <a href="" class="btn btn-warning">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <a href="/kopi/edit/<?= $kopi['slug']; ?>" class="btn btn-warning">Edit</a>
+
+                            <form action="/kopi/<?= $kopi['id']; ?>" method="post" class="d-inline">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin?')">Delete</button>
+                            </form>
+
                             <br>
                             <a href="/kopi">Back to List Coffee</a>
                         </div>
