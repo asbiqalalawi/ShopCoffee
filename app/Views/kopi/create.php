@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-7 mx-auto">
             <h2 class="my-4">Form Tambah Data Kopi</h2>
-            <form action="/kopi/save" method="POST">
+            <form action="/kopi/save" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label">Nama Kopi</label>
@@ -28,8 +28,17 @@
                 </div>
                 <div class="form-group row">
                     <label for="image" class="col-sm-2 col-form-label">Gambar</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="image" name="image" value="<?= old('image'); ?>">
+                    <div class="col-sm-2">
+                        <img src="/img/default.png" class="img-thumbnail img-preview">
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input <?= $validation->hasError('image') ? 'is-invalid' : ''; ?>" id="image" name="image" onchange="previewImg()">
+                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                <?= $validation->getError('image'); ?>
+                            </div>
+                            <label class="custom-file-label" for="image">Pilih gambar..</label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">

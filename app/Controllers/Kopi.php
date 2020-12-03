@@ -68,20 +68,37 @@ class Kopi extends BaseController
                 'errors' => [
                     'required' => 'Deskripsi harus diisi.'
                 ]
+            ],
+            'image' => [
+                'rules' => 'uploaded[image]|max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar terlebih dahulu.',
+                    'max_size' => 'Ukuran gambar terlalu besar.',
+                    'is_image' => 'Anda bukan memilih gambar',
+                    'mime_in' => 'Anda bukan memilih gambar'
+                ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/Kopi/create')->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // return redirect()->to('/Kopi/create')->withInput()->with('validation', $validation);
+            return redirect()->to('/Kopi/create')->withInput();
         }
 
+        //Mengambil gambar
+        $fileimage = $this->request->getFile('image');
+
+        //Memindahlan file ke img
+        $fileimage->move('img');
+
+        //Mengambil nama file
+        $imagename = $fileimage->getName();
 
         $slug = url_title($this->request->getVar('name'), '-', true);
-
         $this->kopiModel->save([
             'name' => $this->request->getVar('name'),
             'slug' => $slug,
             'deskripsi' => $this->request->getVar('deskripsi'),
-            'image' => $this->request->getVar('image'),
+            'image' => $imagename,
 
         ]);
 
@@ -92,6 +109,12 @@ class Kopi extends BaseController
 
     public function delete($id)
     {
+        //Cari gambar berdasarkan id
+        $kopi = $this->kopiModel->find($id);
+
+        //Menghapus gambar
+        unlink('img/' . $kopi['image']);
+
         $this->kopiModel->delete($id);
         session()->setFlashData('message', 'Data berhasil dihapus.');
         return redirect()->to('/kopi');
@@ -132,10 +155,31 @@ class Kopi extends BaseController
                 'errors' => [
                     'required' => 'Deskripsi harus diisi.'
                 ]
+            ],
+            'image' => [
+                'rules' => 'max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar terlalu besar.',
+                    'is_image' => 'Anda bukan memilih gambar',
+                    'mime_in' => 'Anda bukan memilih gambar'
+                ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/Kopi/edit/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+            return redirect()->to('/Kopi/edit/' . $this->request->getVar('slug'))->withInput();
+        }
+
+        //Ambil gambar
+        $fileImage = $this->request->getFile('image');
+
+        //cek gambar, apakah diganti atau tidak
+        if ($fileImage->getError() == 4) {
+            $imagename = $this->request->getVar('imageLama');
+        } else {
+            $imagename = $fileImage->getName('');
+            //Pindah gambar
+            $fileImage->move('img', $imagename);
+            //hapus file yang lama
+            unlink('img/' . $this->request->getVar('imageLama'));
         }
 
         $slug = url_title($this->request->getVar('name'), '-', true);
@@ -145,7 +189,7 @@ class Kopi extends BaseController
             'name' => $this->request->getVar('name'),
             'slug' => $slug,
             'deskripsi' => $this->request->getVar('deskripsi'),
-            'image' => $this->request->getVar('image'),
+            'image' => $imagename,
 
         ]);
 

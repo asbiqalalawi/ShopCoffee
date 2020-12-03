@@ -32,6 +32,24 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
+    <script>
+        function previewImg() {
+            const image = document.querySelector('#image');
+            const imageLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview');
+
+            // Mengganti URL
+            imageLabel.textContent = image.files[0].name;
+
+            // Mengganti preview
+            const fileImage = new FileReader();
+            fileImage.readAsDataURL(image.files[0]);
+
+            fileImage.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
 </body>
 
 </html>
