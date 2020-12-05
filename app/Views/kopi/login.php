@@ -31,6 +31,11 @@
             <i class="fas fa-users" style="font-size:100px;color:white"></i>
             <h3 class="login">Login</h3>
         </center>
+        <?php if (session()->getFlashData('message')) : ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashData('message'); ?>
+            </div>
+        <?php endif; ?>
         <form action="<?= base_url('auth/login') ?> " method='POST'>
             <div class="form-group">
                 <i class="fas fa-user" style="color:white"></i>
