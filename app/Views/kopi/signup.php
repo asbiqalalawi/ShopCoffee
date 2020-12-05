@@ -18,7 +18,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-link active" href="/home/login">Login</a>
+                <a class="nav-link" href="/home/login">Login</a>
                 <a class="nav-link active" href="/home/signup">Sign Up</a>
             </div>
         </div>
@@ -33,24 +33,24 @@
         </center>
         <form action="<?= base_url('auth/login') ?> " method='POST'>
             <div class="form-group">
-                <i class="fas fa-tag" style="color:white"></i>
+                <i class="fas fa-user-tag" style="color:white"></i>
                 <label for="" style="color:white">Your Name </label>
                 <input autocomplete="off" autofocus="on" type="text" name="name" id="name" class="form-control">
             </div>
             <div class="form-group">
-                <i class="fas fa-user-tag" style="color:white"></i>
-                <label for="" style="color:white">Username </label>
-                <input autocomplete="off" autofocus="on" type="text" name="username" id="username" class="form-control">
-            </div>
-            <div class="form-group">
-                <i class="fas fa-phone" style="color:white"></i>
-                <label for="" style="color:white">Number Phone </label>
-                <input autocomplete="off" autofocus="on" type="text" name="phone" id="phone" class="form-control">
+                <i class="fas fa-envelope" style="color:white"></i>
+                <label for="" style="color:white">Email </label>
+                <input autocomplete="off" autofocus="on" type="text" name="email" id="email" class="form-control">
             </div>
             <div class="form-group">
                 <i class="fas fa-key" style="color:white"></i>
                 <label for="" style="color:white">Password</label>
-                <input autocomplete="off" autofocus="on" type="password" name="password" id="password" class="form-control">
+                <input autocomplete="off" autofocus="on" type="password" name="password1" id="password1" class="form-control">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-key" style="color:white"></i>
+                <label for="" style="color:white">Confirm Password</label>
+                <input autocomplete="off" autofocus="on" type="password" name="password2" id="password2" class="form-control">
             </div>
             <a href="/home/login" class="btn btn-outline-primary btn-block">Register</a>
         </form>
