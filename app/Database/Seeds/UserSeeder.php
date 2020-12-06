@@ -10,20 +10,20 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
     {
         $data = [
             [
-                'username'      => 'Asbiq Al Alawi',
-                'email'         => 'asbiq@gmail.com',
+                'username'      => 'Rahmayanti Kurniasih',
+                'email'         => 'rahma@gmail.com',
                 'image'         => 'default.png',
-                'password'      => password_hash('asbiq', PASSWORD_DEFAULT),
-                'role_id'       => 1,
+                'password'      => password_hash('rahma', PASSWORD_DEFAULT),
+                'role_id'       => 2,
                 'is_active'     => 1,
                 'date_created'  => Time::now()
             ],
             [
-                'username'      => 'Abie Perdana Kusuma',
-                'email'         => 'abie@gmail.com',
+                'username'      => 'Amara Indah Pancarani',
+                'email'         => 'amara@gmail.com',
                 'image'         => 'default.png',
-                'password'      => password_hash('abie', PASSWORD_DEFAULT),
-                'role_id'       => 1,
+                'password'      => password_hash('amara', PASSWORD_DEFAULT),
+                'role_id'       => 2,
                 'is_active'     => 1,
                 'date_created'  => Time::now()
             ]

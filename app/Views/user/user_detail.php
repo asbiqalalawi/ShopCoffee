@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="nav-bar float-right mt-3">
                 <div class="navbar-nav" style="margin-right: 20px;">
-                    <a class="nav-link" href="/kopi">Dashboard</a>
+                    <a class="nav-link" href="/user">Dashboard</a>
                     <a class="nav-link " href="/home/login">Log Out</a>
                 </div>
             </div>
@@ -22,7 +22,7 @@
 <div class="container" style="margin-top: 105px;">
     <nav aria-label="breadcrumb" class="brdcrmb shadow rounded">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/kopi">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/user">Dashboard</a></li>
             <li class="breadcrumb-item active" aria-current="page">Detail</li>
         </ol>
     </nav>
@@ -36,14 +36,6 @@
         <div class="container border-top">
             <p class="card-text mt-2"><?= $kopi['stock']; ?></p>
             <p class="card-text mt-2"><?= $kopi['deskripsi']; ?></p>
-        </div>
-        <div class="container mt-3" style="position: static;">
-            <form action="/kopi/<?= $kopi['id']; ?>" method="post" class="d-inline">
-                <?= csrf_field(); ?>
-                <input type="hidden" name="_method" value="DELETE">
-                <button type="submit" class="btn btn-outline-danger ml-2 float-right" onclick="return confirm('apakah anda yakin?')">Delete</button>
-            </form>
-            <a href="/kopi/edit/<?= $kopi['slug']; ?>" class="btn btn-outline-warning float-right">Edit</a>
         </div>
     </div>
 </div>

@@ -40,6 +40,10 @@ $routes->get('/kopi/(:any)', 'Kopi::detail/$1');
 
 $routes->get('/home/_login', 'Home::_login');
 
+$routes->get('/user/(:any)', 'User::detail/$1');
+
+$routes->get('/user', 'User::index', ['filter' => 'auth']);
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

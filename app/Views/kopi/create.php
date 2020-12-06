@@ -51,6 +51,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="stock" class="col-sm-2 col-form-label">Stok</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control desk <?= $validation->hasError('stock') ? 'is-invalid' : ''; ?>" id="stock" name="stock" value="<?= old('stock'); ?>">
+                                <div id="validationServer03Feedback" class="invalid-feedback">
+                                    <?= $validation->getError('stock'); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="image" class="col-sm-2 col-form-label">Gambar</label>
                             <div class="col-sm-2">
                                 <img src="/img/default.png" class="img-thumbnail img-preview">

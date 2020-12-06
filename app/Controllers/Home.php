@@ -56,10 +56,15 @@ class Home extends BaseController
 				if (password_verify($password, $user['password'])) {
 					$data = [
 						'email' => $user['email'],
-						'role_id' => $user['role_id']
+						'role_id' => $user['role_id'],
+						'logged_in'     => TRUE
 					];
 					session()->set($data);
-					return redirect()->to('/user');
+					if ($user['role_id'] == 1) {
+						return redirect()->to('/kopi');
+					} else {
+						return redirect()->to('/user');
+					}
 				} else {
 					session()->setFlashData('message', '<div class="alert alert-danger" role="alert">Password yang Anda masukkan salah!</div>');
 					return redirect()->to('/home/login');
