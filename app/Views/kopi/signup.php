@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 <style>
     body {
-        background-color: lightblue;
+        background-color: #1a1a1a;
     }
 
     .login {

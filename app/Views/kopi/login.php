@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 <style>
     body {
-        background-color: lightblue;
+        background-color: #1a1a1a;
     }
 
     .login {
@@ -11,7 +11,7 @@
     }
 </style>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow mb-5 bg-white rounded">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow mb-5 bg-black rounded">
         <a class="navbar-brand">Kopi Lampung</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

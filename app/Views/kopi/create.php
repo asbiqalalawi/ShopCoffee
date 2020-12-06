@@ -44,7 +44,7 @@
                         <div class="form-group row">
                             <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control <?= $validation->hasError('deskripsi') ? 'is-invalid' : ''; ?>" id="deskripsi" name="deskripsi" value="<?= old('deskripsi'); ?>">
+                                <input type="text" class="form-control desk <?= $validation->hasError('deskripsi') ? 'is-invalid' : ''; ?>" id="deskripsi" name="deskripsi" value="<?= old('deskripsi'); ?>">
                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                     <?= $validation->getError('deskripsi'); ?>
                                 </div>
@@ -66,8 +66,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Tambah Data</button>
+                            <div class="col">
+                                <button type="submit" class="btn btn-outline-primary float-right">Tambah Data</button>
                             </div>
                         </div>
                     </form>
