@@ -38,6 +38,8 @@ $routes->get('/kopi/edit/(:segment)', 'Kopi::edit/$1');
 $routes->delete('/kopi/(:num)', 'Kopi::delete/$1');
 $routes->get('/kopi/(:any)', 'Kopi::detail/$1');
 
+$routes->get('/home/_login', 'Home::_login');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

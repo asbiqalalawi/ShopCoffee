@@ -31,23 +31,25 @@
             <i class="fas fa-users" style="font-size:100px;color:white"></i>
             <h3 class="login">Login</h3>
         </center>
-        <?php if (session()->getFlashData('message')) : ?>
-            <div class="alert alert-success" role="alert">
-                <?= session()->getFlashData('message'); ?>
-            </div>
-        <?php endif; ?>
-        <form action="<?= base_url('auth/login') ?> " method='POST'>
+        <?= (session()->getFlashData('message')); ?>
+        <form action="/home/loggedin" method='POST'>
             <div class="form-group">
-                <i class="fas fa-user" style="color:white"></i>
-                <label for="" style="color:white">Username </label>
-                <input autocomplete="off" autofocus="on" type="text" name="username" id="username" class="form-control">
+                <i class="fas fa-envelope" style="color:white"></i>
+                <label for="email" style="color:white">Email</label>
+                <input autocomplete="off" autofocus="on" type="text" name="email" id="email" class="form-control <?= $validation->hasError('email') ? 'is-invalid' : ''; ?>" value="<?= old('email'); ?>">
+                <div id="validationServer03Feedback" class="invalid-feedback">
+                    <?= $validation->getError('email'); ?>
+                </div>
             </div>
             <div class="form-group">
                 <i class="fas fa-key" style="color:white"></i>
-                <label for="" style="color:white">Password</label>
-                <input autocomplete="off" autofocus="on" type="password" name="password" id="password" class="form-control">
+                <label for="password" style="color:white">Password</label>
+                <input autocomplete="off" autofocus="on" type="password" name="password" id="password" class="form-control <?= $validation->hasError('password') ? 'is-invalid' : ''; ?>">
+                <div id="validationServer03Feedback" class="invalid-feedback">
+                    <?= $validation->getError('password'); ?>
+                </div>
             </div>
-            <a href="/kopi" class="btn btn-outline-primary btn-block">Sign In</a>
+            <button type="submit" class="btn btn-outline-primary btn-block">Sign In</button>
         </form>
     </div>
 </div>

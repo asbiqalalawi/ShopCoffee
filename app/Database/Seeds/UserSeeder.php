@@ -13,7 +13,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
                 'username'      => 'Asbiq Al Alawi',
                 'email'         => 'asbiq@gmail.com',
                 'image'         => 'default.png',
-                'password'      => 'password',
+                'password'      => password_hash('asbiq', PASSWORD_DEFAULT),
                 'role_id'       => 1,
                 'is_active'     => 1,
                 'date_created'  => Time::now()
@@ -22,7 +22,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
                 'username'      => 'Abie Perdana Kusuma',
                 'email'         => 'abie@gmail.com',
                 'image'         => 'default.png',
-                'password'      => 'password',
+                'password'      => password_hash('abie', PASSWORD_DEFAULT),
                 'role_id'       => 1,
                 'is_active'     => 1,
                 'date_created'  => Time::now()

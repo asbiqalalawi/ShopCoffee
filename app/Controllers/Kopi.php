@@ -20,8 +20,6 @@ class Kopi extends BaseController
             'kopi' => $this->kopiModel->getKopi()
         ];
 
-
-
         return view('kopi/index', $data);
     }
 
