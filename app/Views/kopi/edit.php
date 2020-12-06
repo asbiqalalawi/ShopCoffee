@@ -1,25 +1,8 @@
-<?= $this->extend('layouts/template'); ?>
+<?= $this->extend('layouts/temp_admin'); ?>
 
 <?= $this->section('content'); ?>
 
-<div class="container">
-    <nav class="navbar navbar-light bg-light shadow mb-5 bg-white rounded">
-        <a class="navbar-brand">Kopi Lampung</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="nav-bar float-right mt-3">
-                <div class="navbar-nav" style="margin-right: 20px;">
-                    <a class="nav-link" href="/kopi">Dashboard</a>
-                    <a class="nav-link " href="/home/login">Log Out</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-</div>
-
-<div class="container">
+<div class="container" style="margin-top: 40px;">
     <nav aria-label="breadcrumb" class="brdcrmb2 shadow rounded">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/kopi">Dashboard</a></li>
@@ -47,7 +30,7 @@
                         <div class="form-group row">
                             <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control desk <?= $validation->hasError('deskripsi') ? 'is-invalid' : ''; ?>" id="deskripsi" name="deskripsi" value="<?= (old('deskripsi')) ? old('deskripsi') : $kopi['deskripsi'] ?>">
+                                <input type="text" class="form-control <?= $validation->hasError('deskripsi') ? 'is-invalid' : ''; ?>" id="deskripsi" name="deskripsi" value="<?= (old('deskripsi')) ? old('deskripsi') : $kopi['deskripsi'] ?>">
                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                     <?= $validation->getError('deskripsi'); ?>
                                 </div>
@@ -56,7 +39,7 @@
                         <div class="form-group row">
                             <label for="stock" class="col-sm-2 col-form-label">Stok</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control desk <?= $validation->hasError('stock') ? 'is-invalid' : ''; ?>" id="stock" name="stock" value="<?= (old('stock')) ? old('stock') : $kopi['stock'] ?>">
+                                <input type="number" class="form-control <?= $validation->hasError('stock') ? 'is-invalid' : ''; ?>" id="stock" name="stock" value="<?= (old('stock')) ? old('stock') : $kopi['stock'] ?>">
                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                     <?= $validation->getError('stock'); ?>
                                 </div>

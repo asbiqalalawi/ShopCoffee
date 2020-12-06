@@ -41,6 +41,7 @@
                                 <th scope="col">No.</th>
                                 <th scope="col">Gambar</th>
                                 <th scope="col">Nama Kopi</th>
+                                <th scope="col">Stok</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -51,6 +52,7 @@
                                     <th scope="row"><?= $i++; ?></th>
                                     <td><img src="/img/<?= $k['image']; ?>" alt="" class="picture"></td>
                                     <td><?= $k['name']; ?></td>
+                                    <td><?= $k['stock']; ?></td>
                                     <td>
                                         <a href="/user/<?= $k['slug']; ?>" class="btn btn-success">Detail</a>
                                     </td>

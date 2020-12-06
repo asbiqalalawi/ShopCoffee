@@ -139,7 +139,7 @@ class Home extends BaseController
 			'email' => $this->request->getVar('email'),
 			'image' => 'default.jpg',
 			'password' => password_hash($this->request->getVar('password1'), PASSWORD_DEFAULT),
-			'role_id' => 1,
+			'role_id' => 2,
 			'is_active' => 1,
 			'date_created' => Time::now()
 

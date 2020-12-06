@@ -1,41 +1,26 @@
-<?= $this->extend('layouts/template'); ?>
+<?= $this->extend('layouts/temp_admin'); ?>
 
 <?= $this->section('content'); ?>
 
 <div class="container">
-    <nav class="navbar navbar-light bg-light shadow mb-5 bg-white rounded">
-        <a class="navbar-brand">Kopi Lampung</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="nav-bar float-right mt-3">
-                <div class="navbar-nav" style="margin-right: 20px;">
-                    <a class="nav-link" href="/kopi">Dashboard</a>
-                    <a class="nav-link " href="/home/login">Log Out</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-</div>
-
-<div class="container">
-    <nav aria-label="breadcrumb" class="brdcrmb2 shadow rounded">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Dashboard /</li>
-        </ol>
-    </nav>
     <div class="container-list shadow bg-white rounded">
         <div class="content mx-3">
             <div class="row">
                 <div class="col">
-                    <p class="dk mt-3">Daftar Kopi</p>
+                    <div class="form-group row" style="margin-bottom: -7px;">
+                        <div class="col">
+                            <p class="dk mt-3">Daftar Kopi</p>
+                        </div>
+                        <div class="col">
+                            <a href="/kopi/create" class="btn btn-primary mt-3 float-right">Tambah Data Kopi</a>
+                        </div>
+                    </div>
                     <?php if (session()->getFlashData('message')) : ?>
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashData('message'); ?>
                         </div>
                     <?php endif; ?>
-                    <table class="table mt-2">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>
@@ -64,6 +49,5 @@
             </div>
         </div>
     </div>
-    <a href="/kopi/create" class="btn btn-primary mt-3 float-right">Tambah Data Kopi</a>
 </div>
 <?= $this->endSection(); ?>
