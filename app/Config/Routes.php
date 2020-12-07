@@ -33,17 +33,17 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::login');
 
-$routes->get('/kopi/create', 'Kopi::create');
-$routes->get('/kopi/edit/(:segment)', 'Kopi::edit/$1');
-$routes->delete('/kopi/(:num)', 'Kopi::delete/$1');
-$routes->get('/kopi/(:any)', 'Kopi::detail/$1');
+$routes->get('/kopi/create', 'Kopi::create', ['filter' => 'auth']);
+$routes->get('/kopi/edit/(:segment)', 'Kopi::edit/$1', ['filter' => 'auth']);
+$routes->delete('/kopi/(:num)', 'Kopi::delete/$1', ['filter' => 'auth']);
+$routes->get('/kopi/(:any)', 'Kopi::detail/$1', ['filter' => 'auth']);
 $routes->get('/kopi', 'Kopi::index', ['filter' => 'auth']);
 
 $routes->get('/home/_login', 'Home::_login');
 
-$routes->get('/user/(:any)', 'User::detail/$1');
+$routes->get('/user/(:any)', 'User::detail/$1', ['filter' => 'auth']);
 $routes->get('/user', 'User::index', ['filter' => 'auth']);
-$routes->get('/buy/(:num)', 'User::buy/$1');
+$routes->get('/buy/(:num)', 'User::buy/$1', ['filter' => 'auth']);
 
 /**
  * --------------------------------------------------------------------

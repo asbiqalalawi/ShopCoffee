@@ -15,8 +15,10 @@ class User extends BaseController
 
     public function index()
     {
-        //     echo 'Welcome ' . session()->get('email');
-        //     echo 'User ' . session()->get('role_id');
+        //Mengecek session melalui role_id
+        if (session()->get('role_id') == 1) {
+            return redirect()->to('/kopi');
+        }
 
         $data = [
             'title' => 'Dashboard | Kopi Lampung',
@@ -27,6 +29,11 @@ class User extends BaseController
 
     public function detail($slug)
     {
+        //Mengecek session melalui role_id
+        if (session()->get('role_id') == 1) {
+            return redirect()->to('/kopi');
+        }
+
         $data = [
             'title' => 'Detail Kopi',
             'kopi' => $this->kopiModel->getKopi($slug)
@@ -42,6 +49,11 @@ class User extends BaseController
 
     public function buy($id)
     {
+        //Mengecek session melalui role_id
+        if (session()->get('role_id') == 1) {
+            return redirect()->to('/kopi');
+        }
+
         $connect = new mysqli("localhost", "root", "", "ecommerce");
         // // dd($connect);
         if (mysqli_query($connect, "UPDATE kopi SET stock=stock-1 WHERE id=$id")) {

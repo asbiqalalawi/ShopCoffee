@@ -159,7 +159,7 @@
                     <a href="/kopi/create">Tambah data</a>
                 </li>
                 <li>
-                    <a href="/home/login">Log Out</a>
+                    <a href="/home/logout">Log Out</a>
                 </li>
             </ul>
         </nav>

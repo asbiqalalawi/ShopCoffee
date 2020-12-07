@@ -17,6 +17,14 @@ class Home extends BaseController
 
 	public function login()
 	{
+		if (session()->get('logged_in')) {
+			if (session()->get('role_id') == 1) {
+				return redirect()->to('/kopi');
+			} else {
+				return redirect()->to('/user');
+			}
+		}
+
 		$data = [
 			'title' => 'Login | Kopi Lampung',
 			'validation' => \Config\Services::validation()
@@ -26,7 +34,7 @@ class Home extends BaseController
 
 	public function loggedin()
 	{
-		//Validasi
+		//Validasi login
 		if (!$this->validate([
 			'email' => [
 				'rules' => 'required|valid_email',
@@ -50,7 +58,7 @@ class Home extends BaseController
 		$email = $this->request->getVar('email');
 		$password = $this->request->getVar('password');
 		$user = $this->userModel->where('email', $email)->first();
-		// dd($user);
+
 		if ($user) {
 			if ($user['is_active'] == 1) {
 				if (password_verify($password, $user['password'])) {
@@ -87,6 +95,14 @@ class Home extends BaseController
 
 	public function signup()
 	{
+		if (session()->get('logged_in')) {
+			if (session()->get('role_id') == 1) {
+				return redirect()->to('/kopi');
+			} else {
+				return redirect()->to('/user');
+			}
+		}
+
 		$data = [
 			'title' => 'Sign Up | Kopi Lampung',
 			'validation' => \Config\Services::validation()

@@ -15,6 +15,11 @@ class Kopi extends BaseController
 
     public function index()
     {
+        //Mengecek session melalui role_id
+        if (session()->get('role_id') == 2) {
+            return redirect()->to('/user');
+        }
+
         $data = [
             'title' => 'Kopi Lampung',
             'kopi' => $this->kopiModel->getKopi()
@@ -25,6 +30,11 @@ class Kopi extends BaseController
 
     public function detail($slug)
     {
+        //Mengecek session melalui role_id
+        if (session()->get('role_id') == 2) {
+            return redirect()->to('/user');
+        }
+
         $data = [
             'title' => 'Detail Kopi',
             'kopi' => $this->kopiModel->getKopi($slug)
@@ -40,7 +50,10 @@ class Kopi extends BaseController
 
     public function create()
     {
-        // session();
+        //Mengecek session melalui role_id
+        if (session()->get('role_id') == 2) {
+            return redirect()->to('/user');
+        }
 
         $data = [
             'title' => 'Form Tambah Data Kopi',
@@ -125,6 +138,11 @@ class Kopi extends BaseController
 
     public function edit($slug)
     {
+        //Mengecek session melalui role_id
+        if (session()->get('role_id') == 2) {
+            return redirect()->to('/user');
+        }
+
         $data = [
             'title' => 'Form Ubah Data Kopi',
             'validation' => \Config\Services::validation(),
@@ -136,13 +154,20 @@ class Kopi extends BaseController
 
     public function update($id)
     {
-
+        //Cek nama kopi apakah ganti atau tidak
+        $kopiLama = $this->kopiModel->getKopi($this->request->getVar('slug'));
+        if ($kopiLama['name'] == $this->request->getVar('name')) {
+            $rule_name = 'required';
+        } else {
+            $rule_name = 'required|is_unique[kopi.name]';
+        }
         //validasi
         if (!$this->validate([
             'name' => [
-                'rules' => 'required',
+                'rules' => $rule_name,
                 'errors' => [
                     'required' => 'Nama kopi harus diisi.',
+                    'is_unique' => 'Nama kopi sudah terdaftar.'
                 ]
             ],
             'deskripsi' => [
