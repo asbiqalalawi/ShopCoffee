@@ -83,8 +83,6 @@ class Kopi extends BaseController
                 ]
             ]
         ])) {
-            // $validation = \Config\Services::validation();
-            // return redirect()->to('/Kopi/create')->withInput()->with('validation', $validation);
             return redirect()->to('/Kopi/create')->withInput();
         }
 
@@ -138,21 +136,13 @@ class Kopi extends BaseController
 
     public function update($id)
     {
-        //cek judul
-        $kopiLama = $this->kopiModel->getKopi($this->request->getVar('slug'));
-        if ($kopiLama['name'] == $this->request->getVar('name')) {
-            $rule_name = 'required';
-        } else {
-            $rule_name = 'required|is_unique[kopi.name]';
-        }
 
         //validasi
         if (!$this->validate([
             'name' => [
-                'rules' => $rule_name,
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Nama kopi harus diisi.',
-                    'is_unique' => 'Nama kopi sudah terdaftar.'
                 ]
             ],
             'deskripsi' => [

@@ -26,6 +26,11 @@
             <li class="breadcrumb-item active" aria-current="page">Detail</li>
         </ol>
     </nav>
+    <?php if (session()->getFlashData('message')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashData('message'); ?>
+        </div>
+    <?php endif; ?>
     <div class="containers shadow p-3 mb-5 rounded">
         <div class="body-img shadow rounded">
             <img src="/img/<?= $kopi['image']; ?>" class="card-img" alt="...">
@@ -42,7 +47,7 @@
         </div>
         <div class="form-group row">
             <div class="col">
-                <button class="btn btn-outline-success float-right mt-3">Beli</button>
+                <a href="<?= base_url('/buy/' . $kopi['id']) ?>" class="btn btn-outline-success float-right mt-3">Beli</a>
             </div>
         </div>
     </div>

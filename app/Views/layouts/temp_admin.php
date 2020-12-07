@@ -193,6 +193,24 @@
             });
         });
     </script>
+    <script>
+        function previewImg() {
+            const image = document.querySelector('#image');
+            const imageLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview');
+
+            // Mengganti URL
+            imageLabel.textContent = image.files[0].name;
+
+            // Mengganti preview
+            const fileImage = new FileReader();
+            fileImage.readAsDataURL(image.files[0]);
+
+            fileImage.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -142,8 +142,6 @@ class Home extends BaseController
 			'role_id' => 2,
 			'is_active' => 1,
 			'date_created' => Time::now()
-
-
 		]);
 
 		session()->setFlashData('message', '<div class="alert alert-success" role="alert">Berhasil membuat akun.</div>');

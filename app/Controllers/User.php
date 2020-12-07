@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\KopiModel;
+use mysqli;
 
 class User extends BaseController
 {
@@ -14,8 +15,9 @@ class User extends BaseController
 
     public function index()
     {
-        //     echo 'Welocome ' . session()->get('email');
+        //     echo 'Welcome ' . session()->get('email');
         //     echo 'User ' . session()->get('role_id');
+
         $data = [
             'title' => 'Dashboard | Kopi Lampung',
             'kopi' => $this->kopiModel->getKopi()
@@ -36,5 +38,16 @@ class User extends BaseController
         }
 
         return view('user/user_detail', $data);
+    }
+
+    public function buy($id)
+    {
+        $connect = new mysqli("localhost", "root", "", "ecommerce");
+        // // dd($connect);
+        if (mysqli_query($connect, "UPDATE kopi SET stock=stock-1 WHERE id=$id")) {
+            session()->setFlashdata('message', 'Berhasil membeli Kopi.');
+
+            return redirect()->to(base_url('/user'));
+        }
     }
 }
