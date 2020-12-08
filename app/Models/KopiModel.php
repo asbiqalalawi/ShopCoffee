@@ -8,7 +8,7 @@ class KopiModel extends Model
 {
     protected $table = 'kopi';
     protected $useTimestamps = true;
-    protected $allowedFields = ['name', 'slug', 'deskripsi', 'image', 'stock'];
+    protected $allowedFields = ['name', 'slug', 'deskripsi', 'harga', 'image', 'stock'];
 
     public function getKopi($slug = false)
     {

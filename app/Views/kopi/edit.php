@@ -37,9 +37,18 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="harga" class="col-sm-2 col-form-label">Harga</label>
+                            <div class="col-sm-10">
+                                <input type="number" style="width: 120px;" class="form-control <?= $validation->hasError('harga') ? 'is-invalid' : ''; ?>" id="harga" name="harga" value="<?= (old('harga')) ? old('harga') : $kopi['harga'] ?>">
+                                <div id="validationServer03Feedback" class="invalid-feedback">
+                                    <?= $validation->getError('harga'); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="stock" class="col-sm-2 col-form-label">Stok</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control <?= $validation->hasError('stock') ? 'is-invalid' : ''; ?>" id="stock" name="stock" value="<?= (old('stock')) ? old('stock') : $kopi['stock'] ?>">
+                                <input type="number" style="width: 120px;" class="form-control <?= $validation->hasError('stock') ? 'is-invalid' : ''; ?>" id="stock" name="stock" value="<?= (old('stock')) ? old('stock') : $kopi['stock'] ?>">
                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                     <?= $validation->getError('stock'); ?>
                                 </div>

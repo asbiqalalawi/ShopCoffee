@@ -80,6 +80,12 @@ class Kopi extends BaseController
                     'required' => 'Deskripsi harus diisi.'
                 ]
             ],
+            'harga' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Harga harus diisi.'
+                ]
+            ],
             'stock' => [
                 'rules' => 'required',
                 'errors' => [
@@ -113,6 +119,7 @@ class Kopi extends BaseController
             'name' => $this->request->getVar('name'),
             'slug' => $slug,
             'deskripsi' => $this->request->getVar('deskripsi'),
+            'harga' => $this->request->getVar('harga'),
             'stock' => $this->request->getVar('stock'),
             'image' => $imagename,
 
@@ -176,6 +183,12 @@ class Kopi extends BaseController
                     'required' => 'Deskripsi harus diisi.'
                 ]
             ],
+            'harga' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Harga harus diisi.'
+                ]
+            ],
             'stock' => [
                 'rules' => 'required',
                 'errors' => [
@@ -215,6 +228,7 @@ class Kopi extends BaseController
             'name' => $this->request->getVar('name'),
             'slug' => $slug,
             'deskripsi' => $this->request->getVar('deskripsi'),
+            'harga' => $this->request->getVar('harga'),
             'stock' => $this->request->getVar('stock'),
             'image' => $imagename,
 

@@ -37,7 +37,14 @@
         </div>
     </div>
     <div class="card-detail border-top shadow-sm p-3 mb-5 rounded">
-        <h5 class="card-title"><?= $kopi['name']; ?></h5>
+        <div class="form-group row" style="margin-bottom: -2px;">
+            <div class="col">
+                <h5 class="card-title"><?= $kopi['name']; ?></h5>
+            </div>
+            <div class="col">
+                <p class="card-text mt-2 float-right" style="font-size: 1.1rem;">Rp. <?= $kopi['harga']; ?></p>
+            </div>
+        </div>
         <div class="container border-top">
             <div class="s">
                 <p class="card-text mt-2 stck"><?= $kopi['stock']; ?></p>
