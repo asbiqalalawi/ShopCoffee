@@ -1,4 +1,23 @@
-<?= $this->extend('layouts/temp_admin'); ?>
+<?= $this->extend('layouts/adminlte'); ?>
+
+<?= $this->section('sidebar'); ?>
+<li class="nav-item">
+    <a href="#" class="nav-link active">
+        <i class="nav-icon fas fa-coffee"></i>
+        <p>
+            Kopi
+        </p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="/Kopi/userinfo" class="nav-link">
+        <i class="nav-icon fas fa-users"></i>
+        <p>
+            User
+        </p>
+    </a>
+</li>
+<?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
 

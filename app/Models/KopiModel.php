@@ -18,4 +18,9 @@ class KopiModel extends Model
 
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function search($keyword)
+    {
+        return $this->table('kopi')->like('name', $keyword);
+    }
 }

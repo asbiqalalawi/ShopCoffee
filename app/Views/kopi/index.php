@@ -1,8 +1,39 @@
-<?= $this->extend('layouts/temp_admin'); ?>
+<?= $this->extend('layouts/adminlte'); ?>
+
+<?= $this->section('sidebar'); ?>
+<li class="nav-item">
+    <a href="#" class="nav-link active">
+        <i class="nav-icon fas fa-coffee"></i>
+        <p>
+            Kopi
+        </p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="/Kopi/userinfo" class="nav-link">
+        <i class="nav-icon fas fa-users"></i>
+        <p>
+            User
+        </p>
+    </a>
+</li>
+<?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
 
 <div class="container">
+    <div class="row">
+        <div class="col-6 mb-1">
+            <form action="" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search..." name="keyword">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="container-list shadow bg-white rounded">
         <div class="content mx-3">
             <div class="row">
@@ -32,7 +63,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1; ?>
+                            <?php $i = 1 + (5 * ($currentPage - 1)); ?>
                             <?php foreach ($kopi as $k) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
@@ -47,6 +78,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <?= $pager->links('kopi', 'kopi_pagination'); ?>
                 </div>
             </div>
         </div>

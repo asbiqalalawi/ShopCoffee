@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\KopiModel;
+use App\Models\UserModel;
 use CodeIgniter\Files\Exceptions\FileNotFoundException;
 
 class Kopi extends BaseController
 {
     protected $kopiModel;
+    protected $userModel;
     public function __construct()
     {
         $this->kopiModel = new KopiModel();
+        $this->userModel = new UserModel();
     }
 
     public function index()
@@ -20,9 +23,22 @@ class Kopi extends BaseController
             return redirect()->to('/user');
         }
 
+        $currentPage = $this->request->getVar('page_kopi') ? $this->request->getVar('page_kopi') : 1;
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $kopi = $this->kopiModel->search($keyword);
+        } else {
+            $kopi = $this->kopiModel;
+        }
+
         $data = [
             'title' => 'Kopi Lampung',
-            'kopi' => $this->kopiModel->getKopi()
+            'kopi' => $this->kopiModel->paginate(5, 'kopi'),
+            'pager' => $this->kopiModel->pager,
+            'name' => session()->get('username'),
+            'image' => session()->get('image'),
+            'currentPage' => $currentPage
         ];
 
         return view('kopi/index', $data);
@@ -37,7 +53,9 @@ class Kopi extends BaseController
 
         $data = [
             'title' => 'Detail Kopi',
-            'kopi' => $this->kopiModel->getKopi($slug)
+            'kopi' => $this->kopiModel->getKopi($slug),
+            'name' => session()->get('username'),
+            'image' => session()->get('image')
         ];
 
         //Jika kopi tidak ada dalam tabel
@@ -57,7 +75,9 @@ class Kopi extends BaseController
 
         $data = [
             'title' => 'Form Tambah Data Kopi',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'name' => session()->get('username'),
+            'image' => session()->get('image')
         ];
 
         return view('kopi/create', $data);
@@ -153,7 +173,9 @@ class Kopi extends BaseController
         $data = [
             'title' => 'Form Ubah Data Kopi',
             'validation' => \Config\Services::validation(),
-            'kopi' => $this->kopiModel->getKopi($slug)
+            'kopi' => $this->kopiModel->getKopi($slug),
+            'name' => session()->get('username'),
+            'image' => session()->get('image')
         ];
 
         return view('kopi/edit', $data);
@@ -237,5 +259,23 @@ class Kopi extends BaseController
         session()->setFlashData('message', 'Data berhasil diubah.');
 
         return redirect()->to('/kopi');
+    }
+
+
+    public function userinfo()
+    {
+        //Mengecek session melalui role_id
+        if (session()->get('role_id') == 2) {
+            return redirect()->to('/user');
+        }
+
+        $data = [
+            'title' => 'Kopi Lampung',
+            'user' => $this->userModel->getUser(),
+            'name' => session()->get('username'),
+            'image' => session()->get('image')
+        ];
+
+        return view('kopi/userinfo', $data);
     }
 }

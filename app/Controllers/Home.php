@@ -64,8 +64,10 @@ class Home extends BaseController
 				if (password_verify($password, $user['password'])) {
 					$data = [
 						'email' => $user['email'],
+						'username' => $user['username'],
+						'image' => $user['image'],
 						'role_id' => $user['role_id'],
-						'logged_in'     => TRUE
+						'logged_in' => TRUE
 					];
 					session()->set($data);
 					if ($user['role_id'] == 1) {
@@ -153,7 +155,7 @@ class Home extends BaseController
 		$this->userModel->save([
 			'username' => $this->request->getVar('username'),
 			'email' => $this->request->getVar('email'),
-			'image' => 'default.jpg',
+			'image' => 'profile.png',
 			'password' => password_hash($this->request->getVar('password1'), PASSWORD_DEFAULT),
 			'role_id' => 2,
 			'is_active' => 1,
